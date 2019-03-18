@@ -1,9 +1,19 @@
 #include <iostream>
+#include "point.h"
+#include "curve.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    Circle *crc = new Circle;
+
+    Point pnt(1,2,3);
+    double x, y, z;
+    pnt.set(9,8,7);
+    pnt.get(x,y,z);
+    y = 5;
+    cout << x << y << z <<  "Hello World " << pnt << endl;
+
     return 0;
 }

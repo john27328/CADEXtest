@@ -4,4 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    curve.cpp \
+    point.cpp
+
+HEADERS += \
+    curve.h \
+    point.h
