@@ -35,4 +35,16 @@ private:
     double ry;
 };
 
+class Helix:  Curve
+{
+public:
+    explicit Helix();
+    explicit Helix(Point c, double r, double step);
+    Point getPoint(double t);
+private:
+    Point c;
+    double r;
+    double s;
+};
+
 #endif // CURVE_H

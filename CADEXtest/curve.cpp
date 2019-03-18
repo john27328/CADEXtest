@@ -46,3 +46,26 @@ Point Ellipse::getPoint(double t)
     double z = c.z();
     return Point(x, y, z);
 }
+
+Helix::Helix()
+{
+    this->c = Point(1,2,0);
+    this->r = 6;
+    this->s = 5;
+}
+
+Helix::Helix(Point c, double r, double step)
+{
+    this->c = c;
+    this->r = r;
+    this->s = step;
+}
+
+Point Helix::getPoint(double t)
+{
+    const double PI  =3.141592653589793238463;
+    double x = c.x() + r * cos(t);
+    double y = c.y() + r * sin(t);
+    double z = c.z() + r * t / 2 / PI;
+    return Point(x, y, z);
+}
