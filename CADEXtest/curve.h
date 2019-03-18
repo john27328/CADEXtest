@@ -23,4 +23,16 @@ private:
     double r;
 };
 
+class Ellipse:  Curve
+{
+public:
+    explicit Ellipse();
+    explicit Ellipse(Point c, double rx, double ry);
+    Point getPoint(double t);
+private:
+    Point c;
+    double rx;
+    double ry;
+};
+
 #endif // CURVE_H

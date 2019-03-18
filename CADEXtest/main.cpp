@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     Circle *crc = new Circle;
+    Circle test;
     Point cp = crc->getPoint(-3.14);
     cout << cp << endl;
     Point pnt(1,2,3);
