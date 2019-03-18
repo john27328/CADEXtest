@@ -8,7 +8,7 @@ class Curve
 {
 public:
     explicit Curve();
-    virtual Point getPoint(double t) const = 0;
+    virtual Point getPoint(double t) {}
     virtual ~Curve() {}
 };
 
