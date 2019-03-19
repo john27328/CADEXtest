@@ -34,3 +34,4 @@
 Makefile*
 *.stash
 *.user
+*.autosave

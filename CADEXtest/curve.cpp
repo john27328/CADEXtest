@@ -25,6 +25,20 @@ Point Circle::getPoint(double t)
     return Point(x, y, z);
 }
 
+Point Circle::getDif(double t)
+{
+    double dx = -r * sin(t);
+    double dy = r * cos(t);
+    double dz = 0;
+    return Point(dx,dy,dz);
+}
+
+void Circle::get(double t, Point point, Point dif)
+{
+    point = this->getPoint(t);
+    dif = this->getDif(t);
+}
+
 Ellipse::Ellipse()
 {
     this->c = Point(1,2,0);
@@ -45,6 +59,20 @@ Point Ellipse::getPoint(double t)
     double y = c.y() + ry * sin(t);
     double z = c.z();
     return Point(x, y, z);
+}
+
+Point Ellipse::getDif(double t)
+{
+    double dx = -rx * sin(t);
+    double dy = ry * cos(t);
+    double dz = 0;
+    return Point(dx,dy,dz);
+}
+
+void Ellipse::get(double t, Point point, Point dif)
+{
+    point = this->getPoint(t);
+    dif = this->getDif(t);
 }
 
 Helix::Helix()
@@ -69,3 +97,19 @@ Point Helix::getPoint(double t)
     double z = c.z() + r * t / 2 / PI;
     return Point(x, y, z);
 }
+
+Point Helix::getDif(double t)
+{
+    const double PI  =3.141592653589793238463;
+    double dx = -r * sin(t);
+    double dy = r * cos(t);
+    double dz = r / 2 / PI;
+    return Point(dx,dy,dz);
+}
+
+void Helix::get(double t, Point point, Point dif)
+{
+    point = this->getPoint(t);
+    dif = this->getDif(t);
+}
+
