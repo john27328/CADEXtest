@@ -99,19 +99,17 @@ Helix::Helix(Point c, double r, double step)
 
 Point Helix::getPoint(double t)
 {
-    const double PI  =3.141592653589793238463;
     double x = c.x() + r * cos(t);
     double y = c.y() + r * sin(t);
-    double z = c.z() + r * t / 2 / PI;
+    double z = c.z() + s * t / 2 / PI;
     return Point(x, y, z);
 }
 
 Point Helix::getDif(double t)
 {
-    const double PI  =3.141592653589793238463;
     double dx = -r * sin(t);
     double dy = r * cos(t);
-    double dz = r / 2 / PI;
+    double dz = s / 2 / PI;
     return Point(dx,dy,dz);
 }
 

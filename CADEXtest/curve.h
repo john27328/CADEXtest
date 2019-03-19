@@ -4,6 +4,8 @@
 #include "point.h"
 #include "cmath"
 
+#define PI 3.141592653589793238463
+
 class Curve
 {
 public:
