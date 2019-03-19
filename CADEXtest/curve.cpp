@@ -5,6 +5,14 @@ Curve::Curve()
 
 }
 
+Point Curve::dif(double t, double dt)
+{
+    double dx = (this->getPoint(t + dt).x() - this->getPoint(t).x()) / dt;
+    double dy = (this->getPoint(t + dt).y() - this->getPoint(t).y()) / dt;
+    double dz = (this->getPoint(t + dt).z() - this->getPoint(t).z()) / dt;
+    return Point(dx,dy,dz);
+}
+
 Circle::Circle() //
 {
     this->c = Point(1,2,0);

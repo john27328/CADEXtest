@@ -12,9 +12,10 @@ public:
     virtual Point getDif(double t) = 0;
     virtual void get(double t, Point point, Point dif) = 0;
     virtual ~Curve() {}
+    Point dif(double t, double dt);
 };
 
-class Circle:  Curve
+class Circle:  public Curve
 {
 public:
     explicit Circle();
@@ -28,7 +29,7 @@ private:
     double r;
 };
 
-class Ellipse:  Curve
+class Ellipse: public Curve
 {
 public:
     explicit Ellipse();
@@ -42,7 +43,7 @@ private:
     double ry;
 };
 
-class Helix:  Curve
+class Helix: public Curve
 {
 public:
     explicit Helix();
