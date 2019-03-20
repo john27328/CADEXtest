@@ -2,7 +2,7 @@
 #include "point.h"
 #include "curve.h"
 #include "tools.h"
-#include <typeinfo>
+
 
 using namespace std;
 
@@ -15,5 +15,6 @@ int main()
     for(auto i: *vec){
         cout <<typeid (*i).name()<<" "<<(typeid (*i) == typeid (Circle))<<endl;
     }
+    vector<Curve *> * nvec = Tools::sample<Circle>(vec);
     return 0;
 }

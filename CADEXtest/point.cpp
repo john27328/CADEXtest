@@ -36,7 +36,7 @@ double Point::z()
     return point[2];
 }
 
-std::ostream& operator<< (std::ostream &out, const Point &point)
+ostream& operator<< (ostream &out, const Point &point)
 {
     out << "(" << point.point[0] << ", " << point.point[1]  << ", " << point.point[2]  << ")";
 

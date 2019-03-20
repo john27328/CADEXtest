@@ -6,9 +6,9 @@ Tools::Tools()
 }
 
 
-std::vector <Curve *>* Tools::createRandomVector(int const n)
+vector <Curve *>* Tools::createRandomVector(int const n)
 {
-    auto vec = new std::vector <Curve *>;
+    auto vec = new vector <Curve *>;
     srand( time(0) );
     double const r_max = 20;
     double const coord_max = 30;
@@ -45,3 +45,15 @@ std::vector <Curve *>* Tools::createRandomVector(int const n)
     return vec;
 }
 
+
+template<typename T >
+vector<Curve *> * Tools::sample(vector<Curve *> * vec)
+{
+    auto new_vec = new vector<Curve*>;
+    for(auto i: *vec){
+        if (typeid (*i) == typeid (T)){
+             new_vec->push_back(i);
+        }
+    }
+    return  new_vec;
+}
