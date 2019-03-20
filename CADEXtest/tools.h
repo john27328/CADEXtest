@@ -12,11 +12,12 @@ class Tools
 public:
     Tools();
     static vector<Curve *> *createRandomVector(int n);
+
     template<class T, class T1>
     static T1 sample(T1 vec);
 
     template<class T>
-    void test();
+    static void test();
 };
 
 #endif // TOOLS_H
