@@ -15,6 +15,8 @@ int main()
     for(auto i: *vec){
         cout <<typeid (*i).name()<<" "<<(typeid (*i) == typeid (Circle))<<endl;
     }
-    vector<Curve *> * nvec = Tools::sample<Circle>(vec);
+    cout << typeid (vec).name() << " " << typeid(vector<Curve *>*).name()<<endl;
+    //auto nvec = Tools::sample<Circle, vector<Curve *>* >(vec);
+    Tools().test<Curve>();
     return 0;
 }

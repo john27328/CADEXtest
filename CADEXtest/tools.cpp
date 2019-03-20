@@ -46,14 +46,21 @@ vector <Curve *>* Tools::createRandomVector(int const n)
 }
 
 
-template<typename T >
-vector<Curve *> * Tools::sample(vector<Curve *> * vec)
+template<class T, class T1>
+T1 Tools::sample(T1 vec)
 {
-    auto new_vec = new vector<Curve*>;
+    auto new_vec = new T1;
     for(auto i: *vec){
         if (typeid (*i) == typeid (T)){
              new_vec->push_back(i);
         }
     }
     return  new_vec;
+}
+
+
+template<class T>
+void Tools::test()
+{
+    cout << "test " << typeid(T).name() << endl;
 }
