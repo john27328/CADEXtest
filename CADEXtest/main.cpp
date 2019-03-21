@@ -12,18 +12,6 @@ T test(T vec)
     cout << "test " << typeid(T1).name() << endl;
 }
 
-template<typename T, typename T1>
-T1* sample(T1* vec)
-{
-    auto new_vec = new T1;
-    for(auto i: *vec){
-        if (typeid (*i) == typeid (T)){
-             new_vec->push_back(i);
-            cout << "sample " << typeid(T1).name() <<" " << typeid(new_vec).name()  << endl;
-        }
-    }
-    return  new_vec;
-}
 
 int main()
 {
@@ -35,7 +23,6 @@ int main()
         cout <<typeid (*i).name()<<" "<<(typeid (*i) == typeid (Circle))<<endl;
     }
     cout << typeid (vec).name() << " " << typeid(vector<Curve *>*).name()<<endl;
-    auto nvec = sample<Circle, vector<Curve *> >(vec);
-    test<vector<Curve *>*, Circle>(vec);
+    auto nvec = Tools::sample<Circle >(vec);
     return 0;
 }
