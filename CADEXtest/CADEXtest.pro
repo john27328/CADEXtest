@@ -6,10 +6,8 @@ CONFIG -= qt
 SOURCES += \
         main.cpp \
     curve.cpp \
-    point.cpp \
-    tools.cpp
+    point.cpp
 
 HEADERS += \
     curve.h \
-    point.h \
-    tools.h
+    point.h
