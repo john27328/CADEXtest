@@ -6,23 +6,23 @@
 
 using namespace std;
 
-template<typename T, typename T1>
-T test(T vec)
-{
-    cout << "test " << typeid(T1).name() << endl;
-}
-
 
 int main()
 {
     auto *crc = new Helix;
     double t=PI * 2;
     cout << "t = "  << t<< " point" << crc->getPoint(t) << " diff" << crc->getDif(t) << " test" << crc->dif(t, 1e-6) << endl;
-    auto vec = Tools::createRandomVector(10);
+    auto vec = Tools::createRandomVector(20);
+
     for(auto i: *vec){
-        cout <<typeid (*i).name()<<" "<<(typeid (*i) == typeid (Circle))<<endl;
+        cout <<typeid (*i).name()<<" point"<<i->getPoint(PI/4.) <<" dif"<<i->getDif(PI/4.)<<endl;
     }
-    cout << typeid (vec).name() << " " << typeid(vector<Curve *>*).name()<<endl;
+
     auto nvec = Tools::sample<Circle >(vec);
+
+    for(auto i: *nvec){
+        cout <<"r = "<< i->getR() <<endl;
+    }
+
     return 0;
 }

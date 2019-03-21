@@ -47,6 +47,12 @@ void Circle::get(double t, Point point, Point dif)
     dif = this->getDif(t);
 }
 
+double Circle::getR() const
+{
+    return r;
+}
+
+
 Ellipse::Ellipse()
 {
     this->c = Point(1,2,0);
@@ -83,6 +89,16 @@ void Ellipse::get(double t, Point point, Point dif)
     dif = this->getDif(t);
 }
 
+double Ellipse::getRx() const
+{
+    return rx;
+}
+
+double Ellipse::getRy() const
+{
+    return ry;
+}
+
 Helix::Helix()
 {
     this->c = Point(1,2,0);
@@ -117,5 +133,15 @@ void Helix::get(double t, Point point, Point dif)
 {
     point = this->getPoint(t);
     dif = this->getDif(t);
+}
+
+double Helix::getR() const
+{
+    return r;
+}
+
+double Helix::getS() const
+{
+    return s;
 }
 

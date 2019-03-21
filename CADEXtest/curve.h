@@ -26,6 +26,8 @@ public:
     Point getDif(double t);
     void get(double t, Point point, Point dif);
 
+    double getR() const;
+
 private:
     Point c;
     double r;
@@ -39,6 +41,10 @@ public:
     Point getPoint(double t);
     Point getDif(double t);
     void get(double t, Point point, Point dif);
+    double getRx() const;
+
+    double getRy() const;
+
 private:
     Point c;
     double rx;
@@ -53,6 +59,10 @@ public:
     Point getPoint(double t);
     Point getDif(double t);
     void get(double t, Point point, Point dif);
+    double getR() const;
+
+    double getS() const;
+
 private:
     Point c;
     double r;
