@@ -1,7 +1,8 @@
 #include <iostream>
 #include "point.h"
 #include "curve.h"
-#include "tools.h"
+#include <vector>
+#include <ctime>
 #include <algorithm>
 
 
@@ -15,34 +16,28 @@ vector<T *> *sample(T1 *vec);
 
 int main()
 {
-    //не забыть стереть
-    auto *crc = new Helix;
-    double t=PI * 2;
-    cout << "t = "  << t<< " point" << crc->getPoint(t) << " diff" << crc->getDif(t) << " test" << crc->dif(t, 1e-6) << endl;
+    auto vec = createRandomVector(20); // 2. Заполняю вектор
 
-    auto vec = createRandomVector(20);
-
+    std::cout.setf(std::ios::fixed);
+    std::cout.precision(4);
     for(auto i: *vec){
-        cout <<typeid (*i).name()<<" point"<<i->getPoint(PI/4.) <<" dif"<<i->getDif(PI/4.)<<endl;
+        cout <<i->name()
+            <<"\t\tpoint"<<i->getPoint(PI/4.)
+           <<"\t\tdif"<<i->getDif(PI/4.)<<endl; // 3. Вывожу точки и координаты
     }
 
-    auto nvec = sample<Circle >(vec);
+    auto nvec = sample<Circle >(vec); // 4. Заполняю второй контейнер кругами
 
-//    for(auto i: *nvec){
-//        cout <<"r = "<< i->getR() <<endl;
-//    }
-
-    sort(nvec->begin(),nvec->end(),
+    sort(nvec->begin(),nvec->end(), //5. Сортирую
          [](const Circle * a, const Circle * b) -> bool
     {
         return a->getR() < b->getR();
     });
 
-    cout <<"*******************"<<endl;
-    double rSumm = 0;
+    double rSumm = 0; //6. Считаю сумму
     for(auto i: *nvec){
         double r = i->getR();
-        cout <<"r = "<< r <<endl;
+        //cout <<"r = "<< r <<endl;
         rSumm+=r;
     }
     cout << "rSumm = " <<rSumm;

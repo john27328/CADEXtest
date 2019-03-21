@@ -10,10 +10,12 @@ class Curve
 {
 public:
     explicit Curve();
+    virtual ~Curve() {}
+
     virtual Point getPoint(double t ) = 0;
     virtual Point getDif(double t) = 0;
     virtual void get(double t, Point point, Point dif) = 0;
-    virtual ~Curve() {}
+    virtual string name() = 0;
     Point dif(double t, double dt);
 };
 
@@ -25,6 +27,7 @@ public:
     Point getPoint(double t);
     Point getDif(double t);
     void get(double t, Point point, Point dif);
+    string name();
 
     double getR() const;
 
@@ -41,8 +44,9 @@ public:
     Point getPoint(double t);
     Point getDif(double t);
     void get(double t, Point point, Point dif);
-    double getRx() const;
+    string name();
 
+    double getRx() const;
     double getRy() const;
 
 private:
@@ -59,8 +63,9 @@ public:
     Point getPoint(double t);
     Point getDif(double t);
     void get(double t, Point point, Point dif);
-    double getR() const;
+    string name();
 
+    double getR() const;
     double getS() const;
 
 private:
