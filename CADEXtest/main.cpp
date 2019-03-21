@@ -2,6 +2,7 @@
 #include "point.h"
 #include "curve.h"
 #include "tools.h"
+#include <algorithm>
 
 
 using namespace std;
@@ -23,6 +24,21 @@ int main()
     for(auto i: *nvec){
         cout <<"r = "<< i->getR() <<endl;
     }
+
+    sort(nvec->begin(),nvec->end(),
+         [](const Circle * a, const Circle * b) -> bool
+    {
+        return a->getR() < b->getR();
+    });
+
+    cout <<"*******************"<<endl;
+    double rSumm = 0;
+    for(auto i: *nvec){
+        double r = i->getR();
+        cout <<"r = "<< r <<endl;
+        rSumm+=r;
+    }
+    cout << "rSumm = " <<rSumm;
 
     return 0;
 }

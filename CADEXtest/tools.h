@@ -20,7 +20,7 @@ public:
         for(auto i: *vec){
             if (typeid (*i) == typeid (T)){
                 new_vec->push_back((T*)i);
-                cout << "sample " << typeid(T).name() <<" " << typeid(new_vec).name()  << endl;
+                //cout << "sample " << typeid(T).name() <<" " << typeid(new_vec).name()  << endl;
             }
         }
         return  new_vec;
