@@ -24,6 +24,9 @@ class Circle:  public Curve
 public:
     explicit Circle();
     explicit Circle(Point c, double r);
+    ~Circle(){
+        //cout<<" ~Circle()"<<endl;
+    }
     Point getPoint(double t);
     Point getDif(double t);
     void get(double t, Point point, Point dif);
@@ -41,6 +44,9 @@ class Ellipse: public Curve
 public:
     explicit Ellipse();
     explicit Ellipse(Point c, double rx, double ry);
+    ~Ellipse(){
+        //cout<<" ~Ellipse()"<<endl;
+    }
     Point getPoint(double t);
     Point getDif(double t);
     void get(double t, Point point, Point dif);
@@ -60,6 +66,9 @@ class Helix: public Curve
 public:
     explicit Helix();
     explicit Helix(Point c, double r, double step);
+    ~Helix(){
+        //cout<<" ~Helix()"<<endl;
+    }
     Point getPoint(double t);
     Point getDif(double t);
     void get(double t, Point point, Point dif);

@@ -4,50 +4,54 @@
 #include <vector>
 #include <ctime>
 #include <algorithm>
+#include <memory>
 
 
 using namespace std;
+using curvePtr = shared_ptr<Curve>;
+using VecCurve = vector<curvePtr>;
+using CirclePtr = shared_ptr<Circle>;
+using VecCircle = vector<CirclePtr>;
 
-vector <Curve *>* createRandomVector(int const n);
+void createRandomVector(int const nVec, VecCurve &vec);
 
-template<typename T, typename T1>
-vector<T *> *sample(T1 *vec);
-
+void sampleCircle(VecCurve & vec, VecCircle & new_vec);
 
 int main()
 {
-    auto vec = createRandomVector(3); // 2. Заполняю вектор
+    VecCurve vec;
+    createRandomVector(20, vec); // 2. Заполняю вектор
 
     std::cout.setf(std::ios::fixed);
     std::cout.precision(4);
-    for(auto i: *vec){
+    for(auto i: vec){
         cout <<i->name()
             <<"\t\tpoint"<<i->getPoint(PI/4.)
-           <<"\t\tdif"<<i->getDif(PI/4.)<<i->dif(PI/4.,1e-6)<<endl; // 3. Вывожу точки и координаты
+           <<"\t\tdif"<<i->getDif(PI/4.)<<endl; // 3. Вывожу точки и координаты
     }
 
-    auto nvec = sample<Circle >(vec); // 4. Заполняю второй контейнер кругами
-
-    sort(nvec->begin(),nvec->end(), //5. Сортирую
-         [](const Circle * a, const Circle * b) -> bool
+//    cout << "vec " << typeid(vec).name() <<" " << typeid(VecCurve).name()  << endl;
+    VecCircle nvec;
+    sampleCircle(vec, nvec); // 4. Заполняю второй контейнер кругами
+    sort(nvec.begin(),nvec.end(), //5. Сортирую
+         [](const CirclePtr a, const CirclePtr b) -> bool
     {
         return a->getR() < b->getR();
     });
 
     double rSumm = 0; //6. Считаю сумму
-    for(auto i: *nvec){
+    for(auto i: nvec){
         double r = i->getR();
         //cout <<"r = "<< r <<endl;
         rSumm+=r;
     }
-    cout << "rSumm = " <<rSumm;
+    cout << "rSumm = " <<rSumm<<endl;
 
     return 0;
 }
 
-vector <Curve *>* createRandomVector(int const n)
+void createRandomVector(int const nVec, VecCurve &vec)
 {
-    auto vec = new vector <Curve *>;
     srand( time(0) );
     double const r_max = 20;
     //double const coord_max = 30;
@@ -55,7 +59,7 @@ vector <Curve *>* createRandomVector(int const n)
     int iC = 0;
     int iE = 0;
     int iH = 0;
-    while(iC*iE*iH == 0 || (iC + iE + iH) < n) {
+    while(iC*iE*iH == 0 || (iC + iE + iH) < nVec) {
         int curve = rand()%3;
 //        double x = (double)rand()/RAND_MAX * coord_max;
 //        double y = (double)rand()/RAND_MAX * coord_max;
@@ -64,18 +68,18 @@ vector <Curve *>* createRandomVector(int const n)
         double z = 0;
         switch (curve) {
         case 0:
-            vec->push_back(new Circle(Point(x,y,z),
+            vec.push_back(make_shared<Circle>(Point(x,y,z),
                                       (double)rand()/RAND_MAX * r_max));
             iC++;
             break;
         case 1:
-            vec->push_back(new Ellipse(Point(x,y,z),
+            vec.push_back(make_shared<Ellipse>(Point(x,y,z),
                                        (double)rand()/RAND_MAX * r_max,
                                        (double)rand()/RAND_MAX * r_max));
             iE++;
             break;
         case 2:
-            vec->push_back(new Helix(Point(x,y,z),
+            vec.push_back(make_shared<Helix>(Point(x,y,z),
                                      (double)rand()/RAND_MAX * r_max,
                                      (double)rand()/RAND_MAX * step_max));
             iH++;
@@ -85,18 +89,14 @@ vector <Curve *>* createRandomVector(int const n)
 
         }
     }
-    return vec;
 }
 
-template<typename T, typename T1>
-vector<T *> *sample(T1 *vec)
+void sampleCircle(VecCurve &vec, VecCircle &new_vec)
 {
-    vector<T*> *new_vec = new vector<T*>;
-    for(auto i: *vec){
-        if (typeid (*i) == typeid (T)){
-            new_vec->push_back((T*)i);
-            //cout << "sample " << typeid(T).name() <<" " << typeid(new_vec).name()  << endl;
+    for(auto i: vec){
+        if (typeid (*i) == typeid (Circle)){
+            new_vec.push_back(static_pointer_cast<Circle>(i));
+            //cout << "sample " << typeid(Circle).name() <<" " << typeid(new_vec).name()  << endl;
         }
     }
-    return  new_vec;
 }
