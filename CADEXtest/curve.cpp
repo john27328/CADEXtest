@@ -128,7 +128,9 @@ Point Helix::getPoint(double t)
 {
     double x = c.x() + r * cos(t);
     double y = c.y() + r * sin(t);
-    double z = c.z() + s * t / 2 / PI;
+    //z(t) = z0 + s * t /2/PI
+    //z(t + 2*PI) = z0 + st /2/PI + s
+    double z = c.z() + s * t / (2. * PI);
     return Point(x, y, z);
 }
 
@@ -136,7 +138,8 @@ Point Helix::getDif(double t)
 {
     double dx = -r * sin(t);
     double dy = r * cos(t);
-    double dz = s / 2 / PI;
+    // dz*2PI = s
+    double dz = s / (2. * PI);
     return Point(dx,dy,dz);
 }
 
