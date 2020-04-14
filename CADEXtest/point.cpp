@@ -14,24 +14,24 @@ void Point::set(double x, double y, double z)
     point[2] = z;
 }
 
-void Point::get(double &x, double &y, double &z)
+void Point::get(double &x, double &y, double &z) const
 {
     x = point[0];
     y = point[1];
     z = point[2];
 }
 
-double Point::x()
+double Point::x() const
 {
     return point[0];
 }
 
-double Point::y()
+double Point::y() const
 {
     return point[1];
 }
 
-double Point::z()
+double Point::z() const
 {
     return point[2];
 }

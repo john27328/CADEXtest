@@ -5,13 +5,13 @@ Curve::Curve()
 
 }
 
-Point Curve::dif(double t, double dt)
-{
-    double dx = (this->getPoint(t + dt).x() - this->getPoint(t).x()) / dt;
-    double dy = (this->getPoint(t + dt).y() - this->getPoint(t).y()) / dt;
-    double dz = (this->getPoint(t + dt).z() - this->getPoint(t).z()) / dt;
-    return Point(dx,dy,dz);
-}
+//Point Curve::dif(double t, double dt)
+//{
+//    double dx = (this->getPoint(t + dt).x() - this->getPoint(t).x()) / dt;
+//    double dy = (this->getPoint(t + dt).y() - this->getPoint(t).y()) / dt;
+//    double dz = (this->getPoint(t + dt).z() - this->getPoint(t).z()) / dt;
+//    return Point(dx,dy,dz);
+//}
 
 Circle::Circle() //
 {
@@ -25,7 +25,7 @@ Circle::Circle(Point c, double r)
     this->r = r;
 }
 
-Point Circle::getPoint(double t)
+Point Circle::getPoint(double t) const
 {
     double x = c.x() + r * cos(t);
     double y = c.y() + r * sin(t);
@@ -33,7 +33,7 @@ Point Circle::getPoint(double t)
     return Point(x, y, z);
 }
 
-Point Circle::getDif(double t)
+Point Circle::getDif(double t) const
 {
     double dx = -r * sin(t);
     double dy = r * cos(t);
@@ -41,13 +41,13 @@ Point Circle::getDif(double t)
     return Point(dx,dy,dz);
 }
 
-void Circle::get(double t, Point point, Point dif)
+void Circle::get(double t, Point point, Point dif) const
 {
     point = this->getPoint(t);
     dif = this->getDif(t);
 }
 
-string Circle::name()
+string Circle::name() const
 {
     return "Circle";
 }
@@ -72,7 +72,7 @@ Ellipse::Ellipse(Point c, double rx, double ry)
     this->ry = ry;
 }
 
-Point Ellipse::getPoint(double t)
+Point Ellipse::getPoint(double t) const
 {
     double x = c.x() + rx * cos(t);
     double y = c.y() + ry * sin(t);
@@ -80,7 +80,7 @@ Point Ellipse::getPoint(double t)
     return Point(x, y, z);
 }
 
-Point Ellipse::getDif(double t)
+Point Ellipse::getDif(double t) const
 {
     double dx = -rx * sin(t);
     double dy = ry * cos(t);
@@ -89,13 +89,13 @@ Point Ellipse::getDif(double t)
 }
 
 
-void Ellipse::get(double t, Point point, Point dif)
+void Ellipse::get(double t, Point point, Point dif) const
 {
     point = this->getPoint(t);
     dif = this->getDif(t);
 }
 
-string Ellipse::name()
+string Ellipse::name() const
 {
     return "Ellipse";
 }
@@ -124,7 +124,7 @@ Helix::Helix(Point c, double r, double step)
     this->s = step;
 }
 
-Point Helix::getPoint(double t)
+Point Helix::getPoint(double t) const
 {
     double x = c.x() + r * cos(t);
     double y = c.y() + r * sin(t);
@@ -134,7 +134,7 @@ Point Helix::getPoint(double t)
     return Point(x, y, z);
 }
 
-Point Helix::getDif(double t)
+Point Helix::getDif(double t) const
 {
     double dx = -r * sin(t);
     double dy = r * cos(t);
@@ -143,13 +143,13 @@ Point Helix::getDif(double t)
     return Point(dx,dy,dz);
 }
 
-void Helix::get(double t, Point point, Point dif)
+void Helix::get(double t, Point point, Point dif) const
 {
     point = this->getPoint(t);
     dif = this->getDif(t);
 }
 
-string Helix::name()
+string Helix::name() const
 {
     return "Helix";
 }

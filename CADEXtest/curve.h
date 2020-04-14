@@ -12,11 +12,11 @@ public:
     explicit Curve();
     virtual ~Curve() {}
 
-    virtual Point getPoint(double t ) = 0;
-    virtual Point getDif(double t) = 0;
-    virtual void get(double t, Point point, Point dif) = 0;
-    virtual string name() = 0;
-    Point dif(double t, double dt);
+    virtual Point getPoint(double t ) const = 0;
+    virtual Point getDif(double t) const = 0;
+    virtual void get(double t, Point point, Point dif) const = 0;
+    virtual string name() const = 0;
+    //Point dif(double t, double dt);
 };
 
 class Circle:  public Curve
@@ -27,10 +27,10 @@ public:
     ~Circle(){
         //cout<<" ~Circle()"<<endl;
     }
-    Point getPoint(double t);
-    Point getDif(double t);
-    void get(double t, Point point, Point dif);
-    string name();
+    Point getPoint(double t) const override;
+    Point getDif(double t) const override;
+    void get(double t, Point point, Point dif) const override;
+    string name() const override;
 
     double getR() const;
 
@@ -47,10 +47,10 @@ public:
     ~Ellipse(){
         //cout<<" ~Ellipse()"<<endl;
     }
-    Point getPoint(double t);
-    Point getDif(double t);
-    void get(double t, Point point, Point dif);
-    string name();
+    Point getPoint(double t) const override;
+    Point getDif(double t) const override;
+    void get(double t, Point point, Point dif) const override;
+    string name() const override;
 
     double getRx() const;
     double getRy() const;
@@ -69,10 +69,10 @@ public:
     ~Helix(){
         //cout<<" ~Helix()"<<endl;
     }
-    Point getPoint(double t);
-    Point getDif(double t);
-    void get(double t, Point point, Point dif);
-    string name();
+    Point getPoint(double t) const override;
+    Point getDif(double t) const override;
+    void get(double t, Point point, Point dif) const override;
+    string name() const override;
 
     double getR() const;
     double getS() const;
